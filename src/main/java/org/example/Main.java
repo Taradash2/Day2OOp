@@ -22,9 +22,22 @@ public class Main {
         cat2.jump();
         cat2.voice();
 
+        if(cat2 instanceof Dog){
+            System.out.println("Cat Color" + ((Dog)cat2).getWeight());
+
+        }
 
 
 
+
+
+
+    }
+
+    public void voiseAlAnimals(Animal[] animals){
+        for (Animal animal : animals){
+            animal.voice();
+        }
     }
 }
 
