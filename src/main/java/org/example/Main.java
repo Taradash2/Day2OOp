@@ -26,19 +26,20 @@ public class Main {
             System.out.println("Cat Color" + ((Dog)cat2).getWeight());
 
         }
-
-
-
-
-
+        voiceAlAnimals(new Animal[] {cat2, dog, cat1});
 
     }
 
-    public void voiseAlAnimals(Animal[] animals){
+    public static void voiceAlAnimals(Animal[] animals){
         for (Animal animal : animals){
             animal.voice();
+            if (animal instanceof Dog){
+                System.out.println("Dog weight: %s kg. \n" + ((Dog)animal).getWeight());
+
+            }
         }
     }
+
 }
 
 abstract class Animal{
@@ -57,6 +58,18 @@ abstract class Animal{
 
     public abstract void voice();
 
+
+}
+
+interface Runnable{
+    void swiming(int distance);
+
+    void run(int distance);
+}
+interface Flyeble{
+    void fly(int distance);
+}
+class CatV2 implements Runnable{
 
 }
 
@@ -106,6 +119,6 @@ class Cat extends Animal{
 
     @Override
     public void voice() {
-        System.out.println("cat burking");
+        System.out.println("cat meows");
     }
 }
