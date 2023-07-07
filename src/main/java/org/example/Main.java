@@ -26,19 +26,33 @@ public class Main {
             System.out.println("Cat Color" + ((Dog)cat2).getWeight());
 
         }
+        voiceAlAnimals(new Animal[] {cat2, dog, cat1});
 
+        CatV2 catV2 = new CatV2("Snow");
+        Runnable catV2_2 = new CatV2("Pitch");
+        Berd berd = new Berd("berd");
 
+        Object[] animals2 =new Object[]{catV2_2, catV2, berd};
 
+        for (Object animals : animals2){
+            if(animals instanceof Flyeble){
+                ((Flyeble)animals).fly(50);
+            }
 
-
+        }
 
     }
 
-    public void voiseAlAnimals(Animal[] animals){
+    public static void voiceAlAnimals(Animal[] animals){
         for (Animal animal : animals){
             animal.voice();
+            if (animal instanceof Dog){
+                System.out.printf("Dog weight: %s kg. \n", ((Dog)animal).getWeight());;
+
+            }
         }
     }
+
 }
 
 abstract class Animal{
@@ -60,6 +74,69 @@ abstract class Animal{
 
 }
 
+interface Runnable{
+
+    String getName();
+    void swiming(int distance);
+
+    void run(int distance);
+}
+interface Flyeble{
+    void fly(int distance);
+}
+class CatV2 implements Runnable{
+
+    private String name;
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void swiming(int distance) {
+
+    }
+
+    public CatV2(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void run(int distance) {
+
+    }
+
+
+}
+class Berd implements Runnable, Flyeble{
+    private String name;
+
+    public Berd(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void swiming(int distance) {
+
+    }
+
+    @Override
+    public void run(int distance) {
+
+    }
+
+    @Override
+    public void fly(int distance) {
+        System.out.printf("%s Fly %d metrs: \n",name,  distance);
+
+    }
+}
 
 class Dog extends Animal{
 
@@ -106,6 +183,6 @@ class Cat extends Animal{
 
     @Override
     public void voice() {
-        System.out.println("cat burking");
+        System.out.println("cat meows");
     }
 }
